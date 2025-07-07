@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nowoczesna Strona</title>
+
+  <title>Nowoczesna Strona z Formularzem</title>
+
+
   <style>
     body {
       margin: 0;
@@ -22,6 +25,7 @@
       font-size: 3rem;
       color: #00ffe1;
       text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+
     }
 
     p {
@@ -30,6 +34,39 @@
       max-width: 600px;
       text-align: center;
       color: #cccccc;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 250px;
+      border: 2px solid #00ffe1;
+      border-radius: 5px;
+      background-color: #1c1c1c;
+      color: #ffffff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="email"]::placeholder {
+      color: #888;
+
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      max-width: 600px;
+      text-align: center;
+      color: #cccccc;
+
     }
 
     button {
@@ -47,14 +84,47 @@
       background-color: #00ffe1;
       color: #0f0f0f;
       box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+
+    }
+
+    .error {
+      color: #ff4c4c;
+      font-size: 0.9rem;
+
     }
   </style>
 </head>
 <body>
 
   <h1>Cześć, świecie!</h1>
-  <p>To zupełnie nowy, stylowy design w ciemnym trybie z neonowym akcentem. Kliknij przycisk, by rozpocząć interakcję!</p>
-  <button onclick="alert('Kliknięcie zarejestrowane! 🔥')">Start</button>
+
+  <p>To nowoczesna strona z walidacją e-maila. Wprowadź swój adres poniżej.</p>
+
+  <form id="emailForm">
+    <input type="email" id="email" placeholder="Wpisz swój e-mail" required>
+    <span id="errorMsg" class="error"></span>
+    <button type="submit">Wyślij</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = "Wprowadź poprawny adres e-mail.";
+      } else {
+        errorMsg.textContent = "";
+        alert("Dziękujemy! E-mail został wysłany: " + email);
+        form.reset();
+      }
+    });
+</script>
 
 </body>
 </html>
