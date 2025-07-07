@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Nowoczesna Strona z Formularzem</title>
+
+
   <style>
     body {
       margin: 0;
@@ -22,6 +25,7 @@
       font-size: 3rem;
       color: #00ffe1;
       text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+
     }
 
     p {
@@ -53,6 +57,16 @@
 
     input[type="email"]::placeholder {
       color: #888;
+
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      max-width: 600px;
+      text-align: center;
+      color: #cccccc;
+
     }
 
     button {
@@ -70,17 +84,20 @@
       background-color: #00ffe1;
       color: #0f0f0f;
       box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+
     }
 
     .error {
       color: #ff4c4c;
       font-size: 0.9rem;
+
     }
   </style>
 </head>
 <body>
 
   <h1>Cześć, świecie!</h1>
+
   <p>To nowoczesna strona z walidacją e-maila. Wprowadź swój adres poniżej.</p>
 
   <form id="emailForm">
@@ -107,7 +124,7 @@
         form.reset();
       }
     });
-  </script>
+</script>
 
 </body>
 </html>
