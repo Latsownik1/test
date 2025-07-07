@@ -2,38 +2,112 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moja Pierwsza Strona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nowoczesna Strona z Formularzem</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
+
     h1 {
-      color: #333;
+      font-size: 3rem;
+      color: #00ffe1;
+      text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
     }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      max-width: 600px;
+      text-align: center;
+      color: #cccccc;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 250px;
+      border: 2px solid #00ffe1;
+      border-radius: 5px;
+      background-color: #1c1c1c;
+      color: #ffffff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input[type="email"]::placeholder {
+      color: #888;
+    }
+
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: none;
+      border: 2px solid #00ffe1;
+      color: #00ffe1;
+      border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
+
     button:hover {
-      background-color: #45a049;
-      color: wheat;
+      background-color: #00ffe1;
+      color: #0f0f0f;
+      box-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1;
+    }
+
+    .error {
+      color: #ff4c4c;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <h1>Witaj na mojej stronie!</h1>
-  <p>To jest przykładowa strona HTML utworzona w ChatGPT.</p>
-  <button onclick="alert('Witaj! Dziękuję za kliknięcie.')">Kliknij mnie</button>
+  <h1>Cześć, świecie!</h1>
+  <p>To nowoczesna strona z walidacją e-maila. Wprowadź swój adres poniżej.</p>
+
+  <form id="emailForm">
+    <input type="email" id="email" placeholder="Wpisz swój e-mail" required>
+    <span id="errorMsg" class="error"></span>
+    <button type="submit">Wyślij</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = "Wprowadź poprawny adres e-mail.";
+      } else {
+        errorMsg.textContent = "";
+        alert("Dziękujemy! E-mail został wysłany: " + email);
+        form.reset();
+      }
+    });
+  </script>
 
 </body>
 </html>
