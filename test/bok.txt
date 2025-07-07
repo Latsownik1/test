@@ -1,3 +1,6 @@
 ksiazki
 ciul
+<<<<<<< HEAD
 frajer
+=======
+>>>>>>> a286a6518b87fbabd66df1796aaeb74317d1dabe
